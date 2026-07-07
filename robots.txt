@@ -1,0 +1,7 @@
+# robots.txt for Mistora Estate Villa
+# https://www.mistoraestatevilla.com/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.mistoraestatevilla.com/sitemap.xml

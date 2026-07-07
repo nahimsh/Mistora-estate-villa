@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-labelledby="title-villa desc-villa">
+  <title id="title-villa">The Villa</title>
+  <desc id="desc-villa">Placeholder image for The Villa — replace with an actual photograph.</desc>
+  <defs>
+    <linearGradient id="grad-villa" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B4332"/>
+      <stop offset="100%" stop-color="#2D6A4F"/>
+    </linearGradient>
+    <linearGradient id="vignette-villa" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0.35)"/>
+      <stop offset="35%" stop-color="rgba(0,0,0,0)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#grad-villa)"/>
+  
+        <g fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="3">
+          <rect x="490.0" y="380.0" width="220" height="140"/>
+          <path d="M470.0,380.0 L600.0,290.0 L730.0,380.0"/>
+          <rect x="575.0" y="450.0" width="50" height="70"/>
+        </g>
+        
+  <rect width="1200" height="800" fill="url(#vignette-villa)"/>
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="600.0" y="708" font-size="42" fill="#FDFBF7" letter-spacing="1">The Villa</text>
+    <text x="600.0" y="748" font-size="20" fill="#E1C567" letter-spacing="3" font-family="Helvetica, Arial, sans-serif">PRIVATE ESTATE RESIDENCE</text>
+  </g>
+</svg>

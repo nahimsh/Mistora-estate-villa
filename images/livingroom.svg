@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-labelledby="title-livingroom desc-livingroom">
+  <title id="title-livingroom">Living Room</title>
+  <desc id="desc-livingroom">Placeholder image for Living Room — replace with an actual photograph.</desc>
+  <defs>
+    <linearGradient id="grad-livingroom" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D2620"/>
+      <stop offset="100%" stop-color="#1B4332"/>
+    </linearGradient>
+    <linearGradient id="vignette-livingroom" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0.35)"/>
+      <stop offset="35%" stop-color="rgba(0,0,0,0)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#grad-livingroom)"/>
+  
+        <g fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="3">
+          <rect x="450.0" y="390.0" width="300" height="80" rx="14"/>
+          <rect x="430.0" y="360.0" width="30" height="110" rx="10"/>
+          <rect x="740.0" y="360.0" width="30" height="110" rx="10"/>
+        </g>
+        
+  <rect width="1200" height="800" fill="url(#vignette-livingroom)"/>
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="600.0" y="708" font-size="42" fill="#FDFBF7" letter-spacing="1">Living Room</text>
+    <text x="600.0" y="748" font-size="20" fill="#E1C567" letter-spacing="3" font-family="Helvetica, Arial, sans-serif">WARM GATHERINGS</text>
+  </g>
+</svg>
