@@ -85,3 +85,16 @@ Then open `http://localhost:8080`.
 ## Deployment
 
 This is a fully static site — it can be deployed as-is to Netlify, Vercel, GitHub Pages, Cloudflare Pages, or any standard web host. No environment variables or build commands are needed.
+
+### Deploying to GitHub Pages with the custom domain
+
+The repo includes a `CNAME` file set to `www.mistoraestatevilla.com`, which is what GitHub Pages needs to serve the site on that domain instead of the default `github.io` URL.
+
+1. In the repo, go to **Settings → Pages** and set the source branch (e.g. `main`) and folder (`/`, the repo root).
+2. At your domain registrar / DNS provider, add these records:
+   - `CNAME` record: host `www` → `<your-github-username>.github.io`
+   - For the bare/apex domain (`mistoraestatevilla.com` without `www`) to also work, add `A` records pointing `@` to GitHub Pages' IPs: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (and optionally an `AAAA` record set for IPv6).
+3. Back in **Settings → Pages**, confirm the custom domain shows as `www.mistoraestatevilla.com` and enable **Enforce HTTPS** once the certificate is issued (can take up to ~24 hours after DNS propagates).
+4. DNS changes can take anywhere from a few minutes to 48 hours to propagate fully.
+
+If you deploy elsewhere (Netlify/Vercel/Cloudflare Pages) instead, delete the `CNAME` file — it's specific to GitHub Pages — and add the domain through that provider's dashboard instead.
