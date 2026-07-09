@@ -84,17 +84,23 @@ Then open `http://localhost:8080`.
 
 ## Deployment
 
-This is a fully static site — it can be deployed as-is to Netlify, Vercel, GitHub Pages, Cloudflare Pages, or any standard web host. No environment variables or build commands are needed.
+This is a fully static site — no build step, no environment variables, no framework detection needed. It's deployed on **Vercel** at `www.mistoraestatevilla.com`.
 
-### Deploying to GitHub Pages with the custom domain
+### Deploying to Vercel with the custom domain
 
-The repo includes a `CNAME` file set to `www.mistoraestatevilla.com`, which is what GitHub Pages needs to serve the site on that domain instead of the default `github.io` URL.
+1. In the [Vercel dashboard](https://vercel.com), import this repository as a new project. Since there's no build step, leave the Framework Preset as **Other** and the Build Command / Output Directory blank (Vercel will serve the static files from the repo root as-is).
+2. Once deployed, go to the project's **Settings → Domains** and add `www.mistoraestatevilla.com`.
+3. Vercel will show the DNS records you need to add at your domain registrar. There are two ways to satisfy them — pick one, not both:
+   - **Recommended (simplest): delegate DNS to Vercel.** At your registrar, change the domain's nameservers to Vercel's:
+     - `ns1.vercel-dns.com`
+     - `ns2.vercel-dns.com`
+     Vercel then manages all DNS records for the domain automatically. This is usually what clears an "Invalid Configuration" error fastest, since there's no record-by-record mismatch possible.
+   - **Manual records**, if you want to keep DNS at your current provider:
+     - `www` → `CNAME` → `cname.vercel-dns.com`
+     - `@` (apex/root, i.e. `mistoraestatevilla.com`) → `A` → `76.76.21.21`
+4. Also add the apex domain `mistoraestatevilla.com` (without `www`) in **Settings → Domains** and set it to **redirect** to `www.mistoraestatevilla.com` — this matches the canonical URLs already used throughout the site's meta tags and structured data.
+5. DNS changes can take a few minutes up to 48 hours to propagate. Vercel automatically issues and renews the SSL certificate once the records resolve correctly.
 
-1. In the repo, go to **Settings → Pages** and set the source branch (e.g. `main`) and folder (`/`, the repo root).
-2. At your domain registrar / DNS provider, add these records:
-   - `CNAME` record: host `www` → `<your-github-username>.github.io`
-   - For the bare/apex domain (`mistoraestatevilla.com` without `www`) to also work, add `A` records pointing `@` to GitHub Pages' IPs: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (and optionally an `AAAA` record set for IPv6).
-3. Back in **Settings → Pages**, confirm the custom domain shows as `www.mistoraestatevilla.com` and enable **Enforce HTTPS** once the certificate is issued (can take up to ~24 hours after DNS propagates).
-4. DNS changes can take anywhere from a few minutes to 48 hours to propagate fully.
+**Common cause of "Invalid Configuration":** DNS records pointing somewhere other than Vercel (e.g. leftover records from a different host), or having only one of the two required records (`www` CNAME and apex `A`) in place. Double-check both, or switch to the nameserver option above to avoid the issue entirely.
 
-If you deploy elsewhere (Netlify/Vercel/Cloudflare Pages) instead, delete the `CNAME` file — it's specific to GitHub Pages — and add the domain through that provider's dashboard instead.
+If you ever deploy elsewhere instead (Netlify, GitHub Pages, Cloudflare Pages), just add the domain through that provider's dashboard — no other changes to this repo are needed.
