@@ -28,7 +28,7 @@ A premium, single-page static website for **Mistora Estate Villa**, a private es
 
 ## Replacing Placeholder Images
 
-Six real photos are already in place (`hero.jpg`, `villa.jpg`, `pool.jpg`, `view.jpg`, `bedroom1.jpg`, `bedroom2.jpg`). The rest are still generated SVG placeholders (`images/*.svg`) standing in until real photography is available. To replace the remaining ones:
+Nine real photos are already in place (`hero.jpg`, `villa.jpg`, `pool.jpg`, `view.jpg`, `bedroom1.jpg`, `bedroom2.jpg`, `dusk.jpg`, `pathway.jpg`, `driveway.jpg`). The rest are still generated SVG placeholders (`images/*.svg`) standing in until real photography is available. To replace the remaining ones:
 
 1. Shoot or source real photos for each file listed below (matching aspect ratio helps, but isn't required — CSS handles cropping).
 2. Save your new photos using the **same filenames** but with a real image extension (e.g. `.jpg` or `.webp`).
@@ -43,6 +43,9 @@ Six real photos are already in place (`hero.jpg`, `villa.jpg`, `pool.jpg`, `view
 | `view.jpg` | Gallery ("The Estate Grounds") + Contact section | ✅ Real photo |
 | `bedroom1.jpg` | Gallery ("Master Bedroom") | ✅ Real photo |
 | `bedroom2.jpg` | Gallery ("Twin Bedroom") | ✅ Real photo |
+| `dusk.jpg` | Gallery ("The Estate at Dusk") | ✅ Real photo |
+| `pathway.jpg` | Gallery ("Evening Pathway") | ✅ Real photo |
+| `driveway.jpg` | Gallery ("Driveway & Parking") | ✅ Real photo |
 | `livingroom.svg` | Gallery | Placeholder |
 | `garden.svg` | Gallery | Placeholder |
 | `campfire.svg` | Gallery | Placeholder |
