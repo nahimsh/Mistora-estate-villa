@@ -28,27 +28,28 @@ A premium, single-page static website for **Mistora Estate Villa**, a private es
 
 ## Replacing Placeholder Images
 
-Every photo on the site is currently a generated placeholder (`images/*.svg`) so the layout can be reviewed before real photography is available. To replace them:
+Six real photos are already in place (`hero.jpg`, `villa.jpg`, `pool.jpg`, `view.jpg`, `bedroom1.jpg`, `bedroom2.jpg`). The rest are still generated SVG placeholders (`images/*.svg`) standing in until real photography is available. To replace the remaining ones:
 
 1. Shoot or source real photos for each file listed below (matching aspect ratio helps, but isn't required — CSS handles cropping).
 2. Save your new photos using the **same filenames** but with a real image extension (e.g. `.jpg` or `.webp`).
 3. Update the corresponding `src` attributes in `index.html` (a simple find-and-replace of `.svg` → `.jpg` inside the `images/` references will do it, once every file exists).
 4. Compress images (aim for under 200KB each) and, ideally, provide `.webp` versions with a `<picture>` fallback for best performance.
 
-| File | Used for |
-|---|---|
-| `hero.svg` | Full-screen hero background |
-| `villa.svg` | About section + gallery |
-| `bedroom1.svg`, `bedroom2.svg` | Gallery |
-| `livingroom.svg` | Gallery |
-| `garden.svg` | Gallery |
-| `campfire.svg` | Gallery |
-| `food.svg` | Gallery |
-| `view.svg` | Gallery + Contact section |
-| `sunrise.svg` | Gallery |
-| `pool.svg` | Gallery |
-| `abbeyfalls.svg`, `rajaseat.svg`, `dubare.svg`, `goldentemple.svg`, `mandalpatti.svg`, `nisargadhama.svg`, `coffeeplantation.svg` | Nearby Attractions |
-| `og-image.png` | Social share preview (Open Graph / Twitter Card) |
+| File | Used for | Status |
+|---|---|---|
+| `hero.jpg` | Full-screen hero background | ✅ Real photo |
+| `villa.jpg` | About section + gallery | ✅ Real photo |
+| `pool.jpg` | Gallery ("The Pool") | ✅ Real photo |
+| `view.jpg` | Gallery ("The Estate Grounds") + Contact section | ✅ Real photo |
+| `bedroom1.jpg` | Gallery ("Master Bedroom") | ✅ Real photo |
+| `bedroom2.jpg` | Gallery ("Twin Bedroom") | ✅ Real photo |
+| `livingroom.svg` | Gallery | Placeholder |
+| `garden.svg` | Gallery | Placeholder |
+| `campfire.svg` | Gallery | Placeholder |
+| `food.svg` | Gallery | Placeholder |
+| `sunrise.svg` | Gallery | Placeholder |
+| `abbeyfalls.svg`, `rajaseat.svg`, `dubare.svg`, `goldentemple.svg`, `mandalpatti.svg`, `nisargadhama.svg`, `coffeeplantation.svg` | Nearby Attractions | Placeholder |
+| `og-image.png` | Social share preview (Open Graph / Twitter Card) | Placeholder |
 
 ## Before You Deploy — Replace These Placeholders
 

@@ -499,8 +499,7 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
-@media (min-width: 640px) { .amenities-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 980px) { .amenities-grid { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 640px) { .amenities-grid { grid-template-columns: repeat(4, 1fr); } }
 
 .amenity-card {
   background: var(--beige);
@@ -553,6 +552,7 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 .icon-hot-water        { -webkit-mask-image: url("icons/hot-water.svg");       mask-image: url("icons/hot-water.svg"); }
 .icon-support          { -webkit-mask-image: url("icons/support.svg");         mask-image: url("icons/support.svg"); }
 .icon-outdoor-seating  { -webkit-mask-image: url("icons/outdoor-seating.svg"); mask-image: url("icons/outdoor-seating.svg"); }
+.icon-pool             { -webkit-mask-image: url("icons/pool.svg");             mask-image: url("icons/pool.svg"); }
 
 /* ---------- Why Stay ---------- */
 .why { background: var(--forest-dark); color: var(--warm-white); position: relative; overflow: hidden; }
