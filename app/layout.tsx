@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 import { site } from "@/lib/site-config";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -110,6 +111,7 @@ export default function RootLayout({
           <Footer />
           <FloatingActions />
         </SmoothScrollProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
