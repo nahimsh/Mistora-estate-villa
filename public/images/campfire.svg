@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder image — replace with an actual photograph">
+  <defs>
+    <linearGradient id="grad-campfire" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10231C"/>
+      <stop offset="100%" stop-color="#4A3312"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#grad-campfire)"/>
+  
+        <path d="M600.0,300.0 C660.0,360.0 640.0,400.0 655.0,430.0 C665.0,470.0 625.0,495.0 600.0,495.0 C575.0,495.0 540.0,470.0 550.0,430.0 C540.0,410.0 560.0,390.0 570.0,370.0 C565.0,395.0 585.0,405.0 590.0,380.0 C600.0,350.0 590.0,325.0 600.0,300.0 Z" fill="rgba(255,255,255,0.14)"/>
+        
+</svg>

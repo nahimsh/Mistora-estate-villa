@@ -1,6 +1,8 @@
 # Mistora Estate Villa — Website
 
-A premium, single-page static website for **Mistora Estate Villa**, a private estate stay in Coorg, Karnataka. Built with plain HTML5, CSS3 and modern vanilla JavaScript — no frameworks, no build step, no dependencies.
+A quiet-luxury single-page website for **Mistora Estate Villa**, a private pool villa on a coffee estate in Suntikoppa, Coorg, Karnataka. Built with **Next.js 14 (App Router)**, **Tailwind CSS**, and **Framer Motion**, with **Lenis** for smooth scrolling.
+
+Design reference: Aman Resorts, Six Senses, Soneva, Evolve Back Coorg — restraint over decoration, generous whitespace, photography-led.
 
 ## Live Contact
 
@@ -8,108 +10,128 @@ A premium, single-page static website for **Mistora Estate Villa**, a private es
 - **Phone / WhatsApp:** +91 8073713857
 - **Email:** Nahimsh22@gmail.com
 
+## Tech Stack
+
+- **Next.js 14** — App Router, TypeScript, `next/image` (AVIF/WebP, lazy loading, blur-free but properly sized), Metadata API for SEO/JSON-LD/`robots.txt`/`sitemap.xml`.
+- **Tailwind CSS** — custom palette and font tokens in `tailwind.config.ts` (see below).
+- **Framer Motion** — scroll-triggered fade-ups (`components/motion.tsx`), staggered reveals, the hero's slow Ken Burns zoom, the rotating testimonial spotlight, and the gallery lightbox transition.
+- **Lenis** — smooth-scroll wrapper in `components/SmoothScrollProvider.tsx`, disabled automatically when the visitor has `prefers-reduced-motion` set.
+
 ## Project Structure
 
 ```
 .
-├── index.html                  Main single-page site
-├── privacy-policy.html         Privacy policy page
-├── terms-and-conditions.html   Booking terms & house rules
-├── style.css                   Core design system + all component styles
-├── legal.css                   Supplementary styles for the legal pages
-├── script.js                   Nav, scroll reveal, lightbox, carousel, back-to-top
-├── images/                     Gallery, hero and attraction images (SVG placeholders + og-image.png)
-├── icons/                      Amenity line icons (SVG, recolored via CSS mask-image)
-├── favicon/                    Favicon set + web app manifest
-├── robots.txt
-├── sitemap.xml
-└── README.md
+├── app/
+│   ├── layout.tsx                 Root layout: fonts, metadata, JSON-LD, Header/Footer/FloatingActions
+│   ├── page.tsx                   Homepage — composes all sections in order
+│   ├── globals.css                Tailwind entrypoint + base styles
+│   ├── robots.ts                  robots.txt (Next.js metadata route)
+│   ├── sitemap.ts                 sitemap.xml (Next.js metadata route)
+│   ├── privacy-policy/page.tsx
+│   └── terms-and-conditions/page.tsx
+├── components/
+│   ├── Header.tsx                 Sticky nav — transparent over the hero, solid once scrolled
+│   ├── Hero.tsx
+│   ├── Intro.tsx
+│   ├── Villa.tsx                  Asymmetric alternating rows with scroll parallax
+│   ├── Amenities.tsx
+│   ├── Experiences.tsx            Pool / coffee walks / dining / bonfire grid
+│   ├── WhyStay.tsx
+│   ├── Gallery.tsx                 Masonry grid + keyboard-accessible lightbox
+│   ├── Nearby.tsx
+│   ├── Testimonial.tsx            Single-quote spotlight, cycles through all reviews
+│   ├── Location.tsx
+│   ├── BookingCTA.tsx
+│   ├── Footer.tsx
+│   ├── FloatingActions.tsx        WhatsApp button + back-to-top
+│   ├── SmoothScrollProvider.tsx   Lenis wrapper
+│   └── motion.tsx                 Shared Framer Motion variants/easing + Reveal helpers
+├── lib/
+│   └── site-config.ts             All content lives here: copy, contact info, nav, amenities,
+│                                   experiences, gallery images, nearby attractions, testimonials
+├── public/
+│   ├── images/                    Real photos + remaining SVG placeholders
+│   ├── icons/                     Amenity line icons (SVG, recolored via CSS mask-image)
+│   └── favicon/                   Favicon set + web app manifest
+├── tailwind.config.ts             Palette, fonts, type scale, custom easing/duration tokens
+└── package.json
 ```
 
-## Replacing Placeholder Images
+## Design Tokens (`tailwind.config.ts`)
 
-Fifteen real photos are already in place. The rest are still generated SVG placeholders (`images/*.svg`) standing in until real photography is available. To replace the remaining ones:
-
-1. Shoot or source real photos for each file listed below (matching aspect ratio helps, but isn't required — CSS handles cropping).
-2. Save your new photos using the **same filenames** but with a real image extension (e.g. `.jpg` or `.webp`).
-3. Update the corresponding `src` attributes in `index.html` (a simple find-and-replace of `.svg` → `.jpg` inside the `images/` references will do it, once every file exists).
-4. Compress images (aim for under 200KB each) and, ideally, provide `.webp` versions with a `<picture>` fallback for best performance.
-
-| File | Used for | Status |
+| Token | Value | Use |
 |---|---|---|
-| `hero.jpg` | Full-screen hero background | ✅ Real photo |
-| `villa.jpg` | About section + gallery | ✅ Real photo |
-| `pool.jpg` | Gallery ("The Pool") | ✅ Real photo |
-| `view.jpg` | Gallery ("The Estate Grounds") + Contact section | ✅ Real photo |
-| `bedroom1.jpg` | Gallery ("Master Bedroom") | ✅ Real photo |
-| `bedroom2.jpg` | Gallery ("Twin Bedroom") | ✅ Real photo |
-| `dusk.jpg` | Gallery ("The Estate at Dusk") | ✅ Real photo |
-| `pathway.jpg` | Gallery ("Evening Pathway") | ✅ Real photo |
-| `driveway.jpg` | Gallery ("Driveway & Parking") | ✅ Real photo |
-| `livingroom.jpg` | Gallery ("Living Room") | ✅ Real photo |
-| `family-suite.jpg` | Gallery ("Family Suite") | ✅ Real photo |
-| `suite-lounge.jpg` | Gallery ("Suite with Sitting Area") | ✅ Real photo |
-| `bedroom3.jpg` | Gallery ("Guest Bedroom") | ✅ Real photo |
-| `bedroom4.jpg` | Gallery ("Deluxe Bedroom") | ✅ Real photo |
-| `outdoor-dining.jpg` | Gallery ("Alfresco Evenings") | ✅ Real photo |
-| `garden.svg` | Gallery | Placeholder |
-| `campfire.svg` | Gallery | Placeholder |
-| `food.svg` | Gallery | Placeholder |
-| `sunrise.svg` | Gallery | Placeholder |
+| `forest` | `#1B3A2F` (+ `light` `#2C5643` / `dark` `#10231C`) | Primary — dark sections, buttons, headings |
+| `gold` | `#C9A227` (+ `light` `#DEC06B` / `dark` `#9C7E1D`) | Eyebrow text, accents |
+| `offwhite` | `#FAF8F3` | Background |
+| `charcoal` | `#2A2A28` (+ `soft` `#5A5A55`) | Body text |
+| `font-serif` | Fraunces | Headings, display type |
+| `font-sans` | Outfit | Body text, nav, UI |
+| `ease-luxury` | `cubic-bezier(0.16, 1, 0.3, 1)` | All Framer Motion / CSS transitions — slow, confident, no bounce |
+
+## Content
+
+**Every piece of copy, contact info, and image reference lives in `lib/site-config.ts`.** To change any text on the site — nav labels, the intro paragraph, amenity names, testimonial quotes, nearby attractions — edit that file; you shouldn't need to touch component code for content changes.
+
+## Swapping in Your Own Images
+
+Most images are already real photos of the villa. A handful of sections still use generated placeholder SVGs until photography is available:
+
+| File(s) | Section | Status |
+|---|---|---|
+| `hero.jpg`, `villa.jpg`, `pool.jpg`, `view.jpg`, `bedroom1.jpg`, `bedroom2.jpg`, `bedroom3.jpg`, `bedroom4.jpg`, `dusk.jpg`, `pathway.jpg`, `driveway.jpg`, `livingroom.jpg`, `family-suite.jpg`, `suite-lounge.jpg`, `outdoor-dining.jpg` | Hero, Villa rows, Experiences, Gallery, Contact | ✅ Real photos |
+| `garden.svg`, `campfire.svg`, `food.svg`, `sunrise.svg` | Gallery / Experiences | Placeholder |
 | `abbeyfalls.svg`, `rajaseat.svg`, `dubare.svg`, `goldentemple.svg`, `mandalpatti.svg`, `nisargadhama.svg`, `coffeeplantation.svg` | Nearby Attractions | Placeholder |
-| `og-image.png` | Social share preview (Open Graph / Twitter Card) | Placeholder |
+| `og-image.png` | Social share preview | Placeholder |
 
-## Before You Deploy — Replace These Placeholders
+To replace a placeholder:
 
-- **Canonical URL / domain:** `https://www.mistoraestatevilla.com/` is used throughout (`<link rel="canonical">`, Open Graph tags, JSON-LD, `robots.txt`, `sitemap.xml`). Replace it with your real domain everywhere it appears.
-- **Google Maps embed:** the `<iframe>` in the Location section currently points to a generic "Coorg, Karnataka" search. Replace `src` with your exact Google Maps embed URL (Google Maps → Share → Embed a map) once you have the villa's exact pin.
-- **Social links:** Instagram / Facebook / YouTube icons in the footer currently link to `#`. Update `href` once real profiles exist.
-- **Reviews:** testimonials are realistic placeholders, not real guest quotes. Replace with genuine reviews as they come in — and only add `Review`/`AggregateRating` structured data once reviews are real (Google's guidelines prohibit fabricated review markup).
-- **Legal pages:** `privacy-policy.html` and `terms-and-conditions.html` contain reasonable, generic starting language. Have them reviewed against your actual booking/payment process before relying on them legally.
+1. Save your photo into `public/images/` using the **same filename** but a real extension (`.jpg` or `.webp`).
+2. Update the matching entry in `lib/site-config.ts` (e.g. `experiences`, `galleryImages`, `nearbyAttractions`) to point at the new filename.
+3. That's it — `next/image` handles resizing, lazy loading and format conversion automatically. No manual compression needed, though keeping originals under ~2–3MB speeds up the build.
 
-## Features
+**Placeholders intentionally have no baked-in captions** (unlike a typical stock generator) because the same placeholder can appear in more than one section with different copy — e.g. `campfire.svg` is captioned "Campfire Evenings" in the Gallery but "Bonfire Evenings" in Experiences. If you regenerate placeholders yourself, keep them caption-free for the same reason.
 
-- Sticky, glassmorphic navigation with mobile drawer menu
-- Full-screen hero with scroll indicator
-- Scroll-reveal animations (`IntersectionObserver`, respects `prefers-reduced-motion`)
-- Masonry-style photo gallery with a keyboard-accessible lightbox
-- Amenities grid using a single recolorable SVG icon set
-- Horizontally scrollable, snap-based guest reviews carousel
-- Nearby attractions grid
-- Embedded map with a clear placeholder note
-- Floating WhatsApp button + back-to-top button
-- SEO: meta description/keywords, canonical, Open Graph, Twitter Card, `LodgingBusiness` + `LocalBusiness` JSON-LD, `robots.txt`, `sitemap.xml`
-- Accessibility: skip link, semantic landmarks, proper heading hierarchy, visible focus states, descriptive alt text, `aria-label`s on icon-only controls
-
-## Local Preview
-
-No build tools are required. Serve the folder with any static server, for example:
+## Local Development
 
 ```bash
-python3 -m http.server 8080
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:8080`.
+Then open `http://localhost:3000`.
 
-## Deployment
+```bash
+npm run build   # production build
+npm run start   # serve the production build locally
+npm run lint    # ESLint
+```
 
-This is a fully static site — no build step, no environment variables, no framework detection needed. It's deployed on **Vercel** at `www.mistoraestatevilla.com`.
+## Deployment (Vercel)
 
-### Deploying to Vercel with the custom domain
+This project deploys to **Vercel** at `www.mistoraestatevilla.com` — no special configuration needed; Vercel auto-detects Next.js.
 
-1. In the [Vercel dashboard](https://vercel.com), import this repository as a new project. Since there's no build step, leave the Framework Preset as **Other** and the Build Command / Output Directory blank (Vercel will serve the static files from the repo root as-is).
-2. Once deployed, go to the project's **Settings → Domains** and add `www.mistoraestatevilla.com`.
-3. Vercel will show the DNS records you need to add at your domain registrar. There are two ways to satisfy them — pick one, not both:
-   - **Recommended (simplest): delegate DNS to Vercel.** At your registrar, change the domain's nameservers to Vercel's:
-     - `ns1.vercel-dns.com`
-     - `ns2.vercel-dns.com`
-     Vercel then manages all DNS records for the domain automatically. This is usually what clears an "Invalid Configuration" error fastest, since there's no record-by-record mismatch possible.
-   - **Manual records**, if you want to keep DNS at your current provider:
+1. Import the repository into the [Vercel dashboard](https://vercel.com) as a new project. Framework Preset, Build Command and Output Directory are all auto-detected — leave them as-is.
+2. Go to **Settings → Domains** and add `www.mistoraestatevilla.com`.
+3. At your domain registrar, either:
+   - **Recommended:** point the domain's nameservers to Vercel's (`ns1.vercel-dns.com`, `ns2.vercel-dns.com`) — Vercel then manages all records automatically, and
+   - **or**, keep your current DNS provider and add both:
      - `www` → `CNAME` → `cname.vercel-dns.com`
-     - `@` (apex/root, i.e. `mistoraestatevilla.com`) → `A` → `76.76.21.21`
-4. Also add the apex domain `mistoraestatevilla.com` (without `www`) in **Settings → Domains** and set it to **redirect** to `www.mistoraestatevilla.com` — this matches the canonical URLs already used throughout the site's meta tags and structured data.
-5. DNS changes can take a few minutes up to 48 hours to propagate. Vercel automatically issues and renews the SSL certificate once the records resolve correctly.
+     - `@` (apex) → `A` → `76.76.21.21`
+4. Add the apex domain (`mistoraestatevilla.com`, no `www`) in **Settings → Domains** too, and set it to redirect to `www.mistoraestatevilla.com` — this matches the canonical URLs already baked into the site's metadata.
+5. DNS propagation can take a few minutes up to 48 hours. Vercel issues and renews SSL automatically once records resolve.
 
-**Common cause of "Invalid Configuration":** DNS records pointing somewhere other than Vercel (e.g. leftover records from a different host), or having only one of the two required records (`www` CNAME and apex `A`) in place. Double-check both, or switch to the nameserver option above to avoid the issue entirely.
+## Before You Go Fully Live
 
-If you ever deploy elsewhere instead (Netlify, GitHub Pages, Cloudflare Pages), just add the domain through that provider's dashboard — no other changes to this repo are needed.
+- **Google Maps embed** (`components/Location.tsx`): currently points to a generic "Coorg, Karnataka" search. Replace the iframe `src` with your exact Google Maps embed URL once you have the villa's precise pin (Google Maps → Share → Embed a map).
+- **Reviews** (`lib/site-config.ts` → `testimonials`): these are realistic placeholders, not real guest quotes. Swap in genuine reviews as they come in, and only add `Review`/`AggregateRating` JSON-LD once they're real — Google's structured data guidelines prohibit fabricated review markup.
+- **Social links**: no social profiles are linked yet (none existed to reference). Add them to the Footer once available.
+- **Legal pages**: `app/privacy-policy` and `app/terms-and-conditions` contain reasonable generic starting language — have them reviewed against your actual booking/payment process before relying on them legally.
+- **OG image**: `public/images/og-image.png` is a generated placeholder graphic, not a real photo — consider swapping it for a real hero shot sized 1200×630 for richer social link previews.
+
+## Accessibility & Performance Notes
+
+- Skip-to-content link, semantic landmarks, visible focus states throughout.
+- All images carry descriptive `alt` text; icon-only buttons carry `aria-label`.
+- All motion respects `prefers-reduced-motion` (Lenis smooth-scroll and the testimonial auto-rotate both disable themselves).
+- `next/image` is used everywhere with explicit `sizes` for correct responsive loading; the hero image is marked `priority` since it's the LCP element.

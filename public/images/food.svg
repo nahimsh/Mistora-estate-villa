@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder image — replace with an actual photograph">
+  <defs>
+    <linearGradient id="grad-food" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A3312"/>
+      <stop offset="100%" stop-color="#C9A227"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#grad-food)"/>
+  
+        <g fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="3">
+          <path d="M480.0,390.0 a120,60 0 0 0 240,0 Z"/>
+          <line x1="465.0" y1="390.0" x2="735.0" y2="390.0"/>
+          <line x1="540.0" y1="330.0" x2="540.0" y2="370.0"/>
+          <line x1="600.0" y1="315.0" x2="600.0" y2="370.0"/>
+          <line x1="660.0" y1="330.0" x2="660.0" y2="370.0"/>
+        </g>
+        
+</svg>

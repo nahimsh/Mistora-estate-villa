@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder image — replace with an actual photograph">
+  <defs>
+    <linearGradient id="grad-coffeeplantation" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A2E22"/>
+      <stop offset="100%" stop-color="#1B3A2F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#grad-coffeeplantation)"/>
+  
+        <g fill="rgba(255,255,255,0.10)">
+          <path d="M600.0,310.0 C690.0,340.0 690.0,460.0 600.0,490.0 C510.0,460.0 510.0,340.0 600.0,310.0 Z"/>
+        </g>
+        <line x1="600.0" y1="315.0" x2="600.0" y2="485.0" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+        
+</svg>
